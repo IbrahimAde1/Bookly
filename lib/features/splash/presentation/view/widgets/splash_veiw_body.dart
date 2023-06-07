@@ -1,7 +1,6 @@
 import 'package:bookly_app/features/splash/presentation/view/widgets/text_silding_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../constans.dart';
 import '../../../../home/presentation/views/home_view.dart';
@@ -26,7 +25,7 @@ class _SplashVeiwBodyState extends State<SplashVeiwBody>
 
   void navigateToHome() {
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () {
         Get.to(() => const HomeView(),
             transition: Transition.fade, duration: kTransitionDuration);
@@ -56,7 +55,7 @@ class _SplashVeiwBodyState extends State<SplashVeiwBody>
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     sildingAnimation =
-        Tween<Offset>(begin: const Offset(0, 20), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
             .animate(animationController);
     animationController.forward();
   }
