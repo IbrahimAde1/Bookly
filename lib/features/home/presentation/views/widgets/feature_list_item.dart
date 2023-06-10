@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:glass/glass.dart';
-
 import '../../../../../constans.dart';
 
 class FeatureListItem extends StatelessWidget {
