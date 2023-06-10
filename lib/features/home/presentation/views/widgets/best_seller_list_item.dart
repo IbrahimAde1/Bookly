@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constans.dart';
 import '../../../../../core/utils/styles.dart';
@@ -11,7 +12,9 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(15),
-      onTap: () {},
+      onTap: () {
+        GoRouter.of(context).push('/detailsView');
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

@@ -9,15 +9,16 @@ class CustomListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: 190,
       child: ScrollSnapList(
           initialIndex: 0,
-          listViewPadding: const EdgeInsets.symmetric(horizontal: 30),
+          listViewPadding: const EdgeInsets.only(left: 30),
           dynamicItemSize: true,
-          itemSize: MediaQuery.of(context).size.height * 0.50,
-          onItemFocus: (p0) {},
+          itemSize: 60,
+          onItemFocus: (index) {},
           scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => const CustomItem(),
+          itemBuilder: (context, index) =>
+              const FeatureListItem(play: true, red: 20),
           itemCount: 10),
     );
   }
