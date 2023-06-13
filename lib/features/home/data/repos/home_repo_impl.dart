@@ -14,7 +14,8 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failures, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await _apiService.get(
-          endPoint: 'volumes?Sorting=newest &q=subject:programing');
+          endPoint:
+              'volumes?Filtering=free&Sorting=newest&q=subject:programing');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
@@ -28,8 +29,19 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() {
-    // TODO: implement fetchFeaturedBooks
-    throw UnimplementedError();
+  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() async {
+    try {
+      var data = await _apiService.get(
+          endPoint: 'volumes?Filtering=free-ebooks&q=computer science');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
   }
 }
