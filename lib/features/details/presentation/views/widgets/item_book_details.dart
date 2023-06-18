@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constans.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../../home/presentation/views/widgets/best_seller_rateing.dart';
+import '../../../../home/presentation/views/widgets/newest_rateing.dart';
 
 class ItemBookDetails extends StatelessWidget {
   const ItemBookDetails({super.key});
@@ -36,7 +36,7 @@ class ItemBookDetails extends StatelessWidget {
         Text('Rudyard Kipling',
             style: Styles.testStyle14
                 .copyWith(color: Colors.white.withOpacity(0.70))),
-        const BestSellerRating(),
+        const NewestRating(count: 2, rateing: 5),
         const SizedBox(
           height: 20,
         ),

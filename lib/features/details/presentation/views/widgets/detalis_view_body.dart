@@ -10,23 +10,21 @@ class DetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            child: Column(
-              children: [
-                CustomBookDetailsAppBar(),
-                ItemBookDetails(),
-                CustomButtonBookDetails(),
-                Spacer(),
-                TextYouCanAlsoLike(),
-                CustomBookDetailsListview(),
-              ],
-            ),
-          )
-        ],
-      ),
+    return const CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          child: Column(
+            children: [
+              CustomBookDetailsAppBar(),
+              ItemBookDetails(),
+              CustomButtonBookDetails(),
+              Spacer(),
+              TextYouCanAlsoLike(),
+              CustomBookDetailsListview(),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

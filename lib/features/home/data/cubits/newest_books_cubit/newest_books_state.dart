@@ -17,8 +17,8 @@ class NewestBooksSuccess extends NewestBooksState {
   const NewestBooksSuccess(this.books);
 }
 
-class FeaturedBooksFailure extends NewestBooksState {
+class NewestBooksFailure extends NewestBooksState {
   final String errMassage;
 
-  const FeaturedBooksFailure(this.errMassage);
+  const NewestBooksFailure(this.errMassage);
 }

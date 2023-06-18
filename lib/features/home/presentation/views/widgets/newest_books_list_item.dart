@@ -1,13 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../../constans.dart';
 import '../../../../../core/utils/styles.dart';
-import 'best_seller_rateing.dart';
+import '../../../data/models/book_model/book_model.dart';
+import 'newest_rateing.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+class NewestBooksListItem extends StatelessWidget {
+  const NewestBooksListItem({
+    super.key,
+    required this.book,
+  });
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,12 +23,17 @@ class BestSellerItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              Assests.kBook1,
-              height: 100,
-            ),
-          ),
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImage(
+                  imageUrl: book.volumeInfo.imageLinks?.thumbnail ??
+                      'http://books.google.com/books/content?id=ryTdDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+                  height: 120,
+                  width: 75,
+                  fit: BoxFit.fill,
+                ),
+              )),
           const SizedBox(
             width: 20,
           ),
@@ -36,25 +45,28 @@ class BestSellerItem extends StatelessWidget {
                 child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  'Harry Potter and the Goblet of Fire',
+                  book.volumeInfo.title!,
                   style: Styles.testStyle20.copyWith(fontFamily: kGTSectrafine),
                 ),
               ),
-              Text('Rudyard Kipling',
+              Text(book.volumeInfo.authors?.first ?? 'none',
                   style: Styles.testStyle14
                       .copyWith(color: Colors.white.withOpacity(0.70))),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    '19.99 €',
+                    'Free ',
                     style: Styles.testStyle20
                         .copyWith(fontWeight: FontWeight.w900),
                   ),
                   const SizedBox(
                     width: 30,
                   ),
-                  const BestSellerRating()
+                  NewestRating(
+                    rateing: book.volumeInfo.averageRating ?? 0,
+                    count: book.volumeInfo.ratingsCount ?? 0,
+                  )
                 ],
               ),
             ],
