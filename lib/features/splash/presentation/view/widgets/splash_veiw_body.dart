@@ -23,9 +23,9 @@ class _SplashVeiwBodyState extends State<SplashVeiwBody>
 
   void navigateToHome() {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       () {
-        GoRouter.of(context).push('/homeView');
+        GoRouter.of(context).pushReplacement('/homeView');
       },
     );
   }
@@ -50,7 +50,7 @@ class _SplashVeiwBodyState extends State<SplashVeiwBody>
 
   void initSliding() {
     animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
     sildingAnimation =
         Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
             .animate(animationController);

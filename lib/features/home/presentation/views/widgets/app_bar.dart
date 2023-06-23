@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../constans.dart';
-import '../../../../search/search.dart';
+import '../../../../search/presentation/search.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+class CustomAppBar extends StatefulWidget {
+  const CustomAppBar({super.key, this.word});
+  final String? word;
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +27,7 @@ class CustomAppBar extends StatelessWidget {
               showSearch(
                 context: context,
                 delegate: SearchData(),
+                query: widget.word,
               );
             },
             icon: const Icon(

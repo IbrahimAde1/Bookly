@@ -17,7 +17,7 @@ class NewestBooksListItem extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(15),
       onTap: () {
-        GoRouter.of(context).push('/detailsView');
+        GoRouter.of(context).push('/detailsView', extra: book);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

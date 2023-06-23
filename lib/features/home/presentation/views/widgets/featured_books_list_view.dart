@@ -1,8 +1,8 @@
-import 'package:bookly_app/features/home/data/cubits/featured_books_cubit/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/custom_circular_progress.dart';
 import '../../../../../core/utils/custom_erorr_massage.dart';
+import '../../manger/featured_books_cubit/featured_books_cubit.dart';
 import 'featured_books_list_item.dart';
 
 class CustomFeaturedBooksListView extends StatelessWidget {
@@ -22,6 +22,7 @@ class CustomFeaturedBooksListView extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: FeatureListItem(
+                        book: state.books[index],
                         url: state.books[index].volumeInfo.imageLinks
                                 ?.thumbnail ??
                             'http://books.google.com/books/content?id=6sXACwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
